@@ -104,7 +104,7 @@ initialize_fleet(model_parallel_config=config)
   - 每个流水线 rank 包含多个虚拟块
   - 通过交错执行减少气泡
 - **推荐设置**：2-4（流水线并行度的倍数）
-- **参考论文**：[Efficient Large-Scale Language Model Training on GPU Clusters](https://arxiv.org/pdf/2104.04473.pdf)
+- **参考论文**：[Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM](https://arxiv.org/pdf/2104.04473.pdf)
 - **示例**：
   ```python
   config = ModelParallelConfig(
@@ -191,8 +191,9 @@ initialize_fleet(model_parallel_config=config)
   ```
 
 **`moe_extended_tp: bool = False`**
-- **功能**：已废弃的标志（从 MCore v0.10 开始）
+- **功能**：已废弃的标志（从 Megatron Core v0.10 开始）
 - **说明**：功能已被 `expert_tensor_parallel_size` 替代
+- **迁移指南**：如果之前使用 `moe_extended_tp=True`，现在应该设置 `expert_tensor_parallel_size` 为期望的张量并行度
 
 ### 2. 初始化配置（Initialization）
 
